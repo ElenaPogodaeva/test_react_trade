@@ -1,0 +1,25 @@
+@import 'App.variables.scss';
+
+.App {
+  max-width: $main-width;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.App-header {
+  padding: 20px 0;
+  border-bottom: 2px solid #ccc;
+}
+
+.header-title {
+  font-size: $title-font;
+  line-height: calc($title-font * 1.5);
+  color: $red;
+  font-weight: 400;
+  margin: 0;
+}
+
+.main-title {
+  font-size: $subtitle-font;
+  color: $red;
+}
