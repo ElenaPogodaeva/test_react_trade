@@ -1,3 +1,4 @@
+import Timer from 'components/Timer/Timer';
 import React from 'react';
 import './App.scss';
 import Table from './components/Table/Table';
@@ -53,6 +54,7 @@ function App() {
           Уважаемые участники, во время вашего хода вы можете изменить параметры торгов, указанных в
           таблице:
         </h2>
+        <Timer />
         <Table data={data} />
       </main>
     </div>
