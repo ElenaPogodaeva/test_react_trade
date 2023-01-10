@@ -1,0 +1,40 @@
+@import 'App.variables.scss';
+
+.container {
+  overflow-x:auto;
+  margin-bottom: 30px;
+}
+
+.table {
+  width: 100%;
+  border-spacing: 0;
+  text-align: center;
+
+  thead th {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: bold;
+    color: $light-blue;
+    text-transform: uppercase;
+    background: #ffffff;
+    padding: 10px;
+  }
+
+  tbody th {
+    font-weight: bold;
+    padding: 5px;
+    text-align: left;
+  }
+
+  td {
+    padding: 5px 10px;
+  }
+
+  tbody tr:nth-child(even) {
+    background: #ffffff;
+  }
+
+  tbody tr:nth-child(odd) {
+    background: $gray;
+  }
+}
