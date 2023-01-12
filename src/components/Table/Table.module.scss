@@ -3,6 +3,7 @@
 .container {
   overflow-x:auto;
   margin-bottom: 30px;
+  margin-top: 20px;
 }
 
 .table {
@@ -10,7 +11,7 @@
   border-spacing: 0;
   text-align: center;
 
-  thead th {
+  .colHead {
     font-size: 16px;
     line-height: 24px;
     font-weight: bold;
@@ -20,21 +21,23 @@
     padding: 10px;
   }
 
-  tbody th {
+  .rowHead {
     font-weight: bold;
     padding: 5px;
     text-align: left;
+    min-width: 350px;
   }
 
   td {
     padding: 5px 10px;
-  }
-
-  tbody tr:nth-child(even) {
-    background: #ffffff;
+    min-width: 160px;
   }
 
   tbody tr:nth-child(odd) {
+    background: #ffffff;
+  }
+
+  tbody tr:nth-child(even) {
     background: $gray;
   }
 }

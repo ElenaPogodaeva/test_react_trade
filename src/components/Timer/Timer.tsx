@@ -3,7 +3,11 @@ import { getPadTime } from 'helpers/getPadTime';
 import React, { useEffect, useState } from 'react';
 import style from './Timer.module.scss';
 
-export const Timer = () => {
+type TimerProps = {
+  setNextTurn: () => void;
+};
+
+export const Timer = ({ setNextTurn }: TimerProps) => {
   const [counter, setCounter] = useState(TURN_TIME);
 
   const hours = getPadTime(Math.floor(counter / 3600));
@@ -11,10 +15,12 @@ export const Timer = () => {
   const seconds = getPadTime(Math.floor(counter % 60));
 
   useEffect(() => {
-    const interval = setInterval(
-      () => setCounter((counter) => (counter >= 1 ? counter - 1 : TURN_TIME)),
-      1000
-    );
+    const interval = setInterval(() => {
+      setCounter((counter) => (counter >= 1 ? counter - 1 : TURN_TIME));
+      if (counter === 0) {
+        setNextTurn();
+      }
+    }, 1000);
 
     return () => {
       clearInterval(interval);
