@@ -1,44 +1,7 @@
 import React from 'react';
 import './App.scss';
 import Table from './components/Table/Table';
-
-const data = [
-  {
-    activities: 'нет',
-    productionTime: '80',
-    warranties: '24',
-    paymentTerms: '30',
-    cost: '3700000',
-  },
-  {
-    activities: 'нет',
-    productionTime: '90',
-    warranties: '24',
-    paymentTerms: '100',
-    cost: '3200000',
-  },
-  {
-    activities: 'нет',
-    productionTime: '75',
-    warranties: '22',
-    paymentTerms: '60',
-    cost: '2800000',
-  },
-  {
-    activities: 'нет',
-    productionTime: '120',
-    warranties: '36',
-    paymentTerms: '50',
-    cost: '2500000',
-  },
-  {
-    activities: 'да',
-    productionTime: '110',
-    warranties: '30',
-    paymentTerms: '70',
-    cost: '2900000',
-  },
-];
+import { USERS_DATA } from './constants/data';
 
 function App() {
   return (
@@ -53,7 +16,7 @@ function App() {
           Уважаемые участники, во время вашего хода вы можете изменить параметры торгов, указанных в
           таблице:
         </h2>
-        <Table data={data} />
+        <Table data={USERS_DATA} />
       </main>
     </div>
   );
