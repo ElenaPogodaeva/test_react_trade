@@ -1,25 +1,15 @@
 import Timer from 'components/Timer/Timer';
-import React, { useState } from 'react';
+import { useAppSelector } from 'hooks/hooks';
+import React from 'react';
+import { IUser } from 'types/types';
 import style from './Table.module.scss';
 
-type Item = {
-  activities: string;
-  productionTime: string;
-  warranties: string;
-  paymentTerms: string;
-  cost: string;
-};
-
 type TableProps = {
-  data: Item[];
+  data: IUser[];
 };
 
 export const Table = ({ data }: TableProps) => {
-  const [turn, setTurn] = useState(0);
-
-  const setNextTurn = () => {
-    setTurn((turn: number) => (turn < data.length - 1 ? turn + 1 : 0));
-  };
+  const { turn } = useAppSelector((state) => state.auction);
 
   return (
     <div className={style.container}>
@@ -32,7 +22,7 @@ export const Table = ({ data }: TableProps) => {
             {new Array(data.length).fill(0).map((_, index) =>
               index === turn ? (
                 <th scope="col" key={index}>
-                  <Timer setNextTurn={setNextTurn} />
+                  <Timer />
                 </th>
               ) : (
                 <th key={index}></th>

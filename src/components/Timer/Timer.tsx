@@ -1,14 +1,12 @@
-import { TURN_TIME } from 'constants/constants';
 import { getPadTime } from 'helpers/getPadTime';
-import React, { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from 'hooks/hooks';
+import React, { useEffect } from 'react';
+import { updateTime, updateTurn } from 'redux/reducers/auctionSlice';
 import style from './Timer.module.scss';
 
-type TimerProps = {
-  setNextTurn: () => void;
-};
-
-export const Timer = ({ setNextTurn }: TimerProps) => {
-  const [counter, setCounter] = useState(TURN_TIME);
+export const Timer = () => {
+  const { counter } = useAppSelector((state) => state.auction);
+  const dispatch = useAppDispatch();
 
   const hours = getPadTime(Math.floor(counter / 3600));
   const minutes = getPadTime(Math.floor((counter / 60) % 60));
@@ -16,9 +14,9 @@ export const Timer = ({ setNextTurn }: TimerProps) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCounter((counter) => (counter >= 1 ? counter - 1 : TURN_TIME));
+      dispatch(updateTime());
       if (counter === 0) {
-        setNextTurn();
+        dispatch(updateTurn());
       }
     }, 1000);
 
