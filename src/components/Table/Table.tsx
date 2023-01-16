@@ -35,9 +35,10 @@ export const Table = ({ data }: TableProps) => {
             <th scope="col" className={style.colHead}>
               Параметры и требования
             </th>
-            {new Array(data.length).fill(0).map((_, index) => (
+            {data.map((item, index) => (
               <th scope="col" key={index} className={style.colHead}>
                 Участник №{index + 1}
+                <span className={`${style.status} ${item.isOnline ? style.online : null}`}></span>
               </th>
             ))}
           </tr>

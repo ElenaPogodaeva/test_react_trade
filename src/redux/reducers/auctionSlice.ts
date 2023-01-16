@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TURN_TIME } from 'constants/constants';
 import { IUser } from 'types/types';
 import { USERS_DATA } from '../../constants/data';
@@ -33,9 +33,14 @@ export const auctionSlice = createSlice({
         state.turn = 0;
       }
     },
+    updateStatus: (state, action: PayloadAction<{ id: string }>) => {
+      const { id } = action.payload;
+      const user = state.users.find((item) => item.id === id) as IUser;
+      user.isOnline = !user.isOnline;
+    },
   },
 });
 
-export const { updateTime, updateTurn } = auctionSlice.actions;
+export const { updateTime, updateTurn, updateStatus } = auctionSlice.actions;
 
 export default auctionSlice.reducer;
