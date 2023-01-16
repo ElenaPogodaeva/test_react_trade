@@ -1,25 +1,21 @@
 @import 'App.variables.scss';
 
-.App {
-  max-width: $main-width;
-  margin: 0 auto;
-  padding: 0 15px;
+.btn {
+  color: white;
+  padding: 14px 20px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
 }
 
-.App-header {
-  padding: 20px 0;
-  border-bottom: 2px solid #ccc;
+.btnGreen {
+  background-color: $green;
 }
 
-.header-title {
-  font-size: $title-font;
-  line-height: calc($title-font * 1.5);
-  color: $red;
-  font-weight: 400;
-  margin: 0;
+.btnBlue {
+  background-color:$blue2;
 }
 
-.main-title {
-  font-size: $subtitle-font;
-  color: $red;
+.btnRed {
+  background-color: $red;
 }
