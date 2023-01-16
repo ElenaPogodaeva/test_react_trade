@@ -5,7 +5,7 @@ import { updateTime, updateTurn } from 'redux/reducers/auctionSlice';
 import style from './Timer.module.scss';
 
 export const Timer = () => {
-  const { counter } = useAppSelector((state) => state.auction);
+  const { counter, isComplete } = useAppSelector((state) => state.auction);
   const dispatch = useAppDispatch();
 
   const hours = getPadTime(Math.floor(counter / 3600));
@@ -14,16 +14,18 @@ export const Timer = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      dispatch(updateTime());
-      if (counter === 0) {
-        dispatch(updateTurn());
+      if (!isComplete) {
+        dispatch(updateTime());
+        if (counter === 0) {
+          dispatch(updateTurn());
+        }
       }
     }, 1000);
 
     return () => {
       clearInterval(interval);
     };
-  }, [counter]);
+  }, [counter, isComplete]);
 
   return (
     <div className={style.timer}>

@@ -7,12 +7,14 @@ export type AuctionState = {
   users: IUser[];
   counter: number;
   turn: number;
+  isComplete: boolean;
 };
 
 const initialState: AuctionState = {
   users: USERS_DATA,
   counter: TURN_TIME,
   turn: 0,
+  isComplete: false,
 };
 
 export const auctionSlice = createSlice({
@@ -38,9 +40,12 @@ export const auctionSlice = createSlice({
       const user = state.users.find((item) => item.id === id) as IUser;
       user.isOnline = !user.isOnline;
     },
+    completeAuction: (state) => {
+      state.isComplete = true;
+    },
   },
 });
 
-export const { updateTime, updateTurn, updateStatus } = auctionSlice.actions;
+export const { updateTime, updateTurn, updateStatus, completeAuction } = auctionSlice.actions;
 
 export default auctionSlice.reducer;
