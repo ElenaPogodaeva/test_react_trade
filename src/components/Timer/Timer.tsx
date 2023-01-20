@@ -1,31 +1,14 @@
 import { getPadTime } from 'helpers/getPadTime';
-import { useAppDispatch, useAppSelector } from 'hooks/hooks';
-import React, { useEffect } from 'react';
-import { updateTime, updateTurn } from 'redux/reducers/auctionSlice';
+import { useAppSelector } from 'hooks/hooks';
+import React from 'react';
 import style from './Timer.module.scss';
 
 export const Timer = () => {
-  const { counter, isComplete } = useAppSelector((state) => state.auction);
-  const dispatch = useAppDispatch();
+  const { timeLeft } = useAppSelector((state) => state.auction);
 
-  const hours = getPadTime(Math.floor(counter / 3600));
-  const minutes = getPadTime(Math.floor((counter / 60) % 60));
-  const seconds = getPadTime(Math.floor(counter % 60));
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isComplete) {
-        dispatch(updateTime());
-        if (counter === 0) {
-          dispatch(updateTurn());
-        }
-      }
-    }, 1000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [counter, isComplete]);
+  const hours = getPadTime(Math.floor(timeLeft / 3600));
+  const minutes = getPadTime(Math.floor((timeLeft / 60) % 60));
+  const seconds = getPadTime(Math.floor(timeLeft % 60));
 
   return (
     <div className={style.timer}>

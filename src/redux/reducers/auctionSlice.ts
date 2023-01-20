@@ -5,28 +5,36 @@ import { USERS_DATA } from '../../constants/data';
 
 export type AuctionState = {
   users: IUser[];
-  counter: number;
+  startTime: number;
+  timeLeft: number;
   turn: number;
   isComplete: boolean;
 };
 
 const initialState: AuctionState = {
   users: USERS_DATA,
-  counter: TURN_TIME,
+  startTime: Date.now(),
+  timeLeft: TURN_TIME,
   turn: 0,
   isComplete: false,
+};
+
+const calcTimeLeft = (startTime: number) => {
+  const currentTime = Date.now();
+  const expireTime = startTime + TURN_TIME * 1000;
+  const timeLeft = expireTime - currentTime;
+  return Math.round(timeLeft / 1000);
 };
 
 export const auctionSlice = createSlice({
   name: 'auction',
   initialState,
   reducers: {
+    setStartTime: (state) => {
+      state.startTime = Date.now();
+    },
     updateTime: (state) => {
-      if (state.counter >= 1) {
-        state.counter -= 1;
-      } else {
-        state.counter = TURN_TIME;
-      }
+      state.timeLeft = calcTimeLeft(state.startTime);
     },
     updateTurn: (state) => {
       if (state.turn < state.users.length - 1) {
@@ -46,6 +54,7 @@ export const auctionSlice = createSlice({
   },
 });
 
-export const { updateTime, updateTurn, updateStatus, completeAuction } = auctionSlice.actions;
+export const { setStartTime, updateTime, updateTurn, updateStatus, completeAuction } =
+  auctionSlice.actions;
 
 export default auctionSlice.reducer;
