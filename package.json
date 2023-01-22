@@ -1,6 +1,7 @@
 {
   "name": "test_react_trade",
   "version": "0.1.0",
+  "homepage": "https://elenapogodaeva.github.io/test_react_trade/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
@@ -21,6 +22,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -55,6 +58,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.11",
+    "gh-pages": "^5.0.0",
     "prettier": "2.8.1"
   }
 }
