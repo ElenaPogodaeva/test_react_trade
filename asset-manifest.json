@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/test_react_trade/static/css/main.7a3f0966.css",
+    "main.js": "/test_react_trade/static/js/main.48921d1a.js",
+    "static/js/787.83076149.chunk.js": "/test_react_trade/static/js/787.83076149.chunk.js",
+    "static/media/hour-glass.svg": "/test_react_trade/static/media/hour-glass.0d9e7890bb6829d0fcd6.svg",
+    "index.html": "/test_react_trade/index.html",
+    "main.7a3f0966.css.map": "/test_react_trade/static/css/main.7a3f0966.css.map",
+    "main.48921d1a.js.map": "/test_react_trade/static/js/main.48921d1a.js.map",
+    "787.83076149.chunk.js.map": "/test_react_trade/static/js/787.83076149.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7a3f0966.css",
+    "static/js/main.48921d1a.js"
+  ]
+}
